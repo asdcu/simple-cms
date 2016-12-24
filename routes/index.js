@@ -12,4 +12,5 @@ module.exports = function (app) {
     app.use('/system', require('./system'));
     app.use('/content', require('./content'));
     app.use('/login', require('./login'));
+    app.use('/logout', require('./logout'));
 };

@@ -1,294 +1,131 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<meta name="renderer" content="webkit">
-		<title>拼图响应式后台管理-后台管理</title>
-		<link rel="stylesheet" href="http://www.pintuer.com/css/pintuer.css">
-		<link rel="stylesheet" href="/admin.css">
-		<link type="image/x-icon" href="http://www.pintuer.com/favicon.ico" rel="shortcut icon" />
-		<link href="http://www.pintuer.com/favicon.ico" rel="bookmark icon" />
-	</head>
+<%- include('header') %>
 
-	<body>
-		<!--顶部-->
-		<div class="layout bg-main bg-inverse fixed" style="z-index: 9;">
-			<div class="container-layout">
-				<div class="navbar">
-					<div class="navbar-head">
-						<button class="button icon-navicon" data-target="#navbar1">
-						</button>
-						<a href="/">
-							<img src="http://www.pintuer.com/images/30-white.png" />
-							<strong class="text-big">拼图响应式后台</strong></a>
-					</div>
-					<div class="navbar-body nav-navicon" id="navbar1">
-						<ul class="nav nav-inline nav-menu">
-							<li><a class="icon-cog" href="#">设置<span class="arrow"></span></a>
-								<ul class="drop-menu">
-									<li><a href="#">全局设置</a></li>
-									<li><a href="#">系统设置</a></li>
-									<li><a href="#">会员设置</a></li>
-									<li><a href="#">积分设置</a></li>
-									<li><a href="#">权限设置</a></li>
-									<li><a href="#">插件设置</a></li>
-									<li><a href="javascript:;">皮肤设置<span class="arrow"></span></a>
-										<ul>
-											<li><a href="#">墨绿</a></li>
-											<li><a href="#">天蓝</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a class="icon-home" href="index.ejs">导航<span class="arrow"></span></a>
-								<ul class="drop-menu">
-									<li><a class="icon-th-list" href="#">栏目</a></li>
-									<li><a class="icon-file-text" href="#">内容<span class="arrow"></span></a>
-										<ul>
-											<li><a href="#">新闻</a></li>
-											<li><a href="#">留言</a></li>
-											<li><a href="#">反馈</a></li>
-										</ul>
-									</li>
-									<li><a class="icon-user" href="#">会员</a></li>
-									<li><a class="icon-shopping-cart" href="#">订单</a></li>
-								</ul>
-							</li>
-						</ul>
-						<ul class="nav nav-inline nav-menu navbar-right">
-							<li>
-								<a class="bg-main" href="javascript:;">
-									<spn><img src="/images/face.jpg" width="28" class="radius-circle"></spn>
-									管理员
-									<span class="downward"></span>
-								</a>
-								<ul class="drop-menu">
-									<li><a class="icon-user" target="_blank" href="javascript:;">修改资料</a></li>
-									<li><a class="icon-key" target="_blank" href="javascript:;">修改密码</a></li>
-								</ul>
-							</li>
-							<li><a class="bg-green" href="javascript:;"><span class="icon-envelope"></span>&nbsp;<span class="badge bg-blue">5+</span><span class="downward"></span></a>
-								<ul class="drop-menu">
-									<li><a class="text-yellow-light" target="_blank" href="javascript:;"><span class="icon-envelope"></span>您有16封邮件</a></li>
-									<li><a class="bg-gray" target="_blank" href="javascript:;"><span class="icon-envelope"></span>查阅更多...</a></li>
-								</ul>
-							</li>
-							<li><a class="bg-blue" href="javascript:;"><span class="icon-bell-o"></span>&nbsp;<span class="badge bg-green">99+</span><span class="downward"></span></a>
-								<ul class="drop-menu">
-									<li><a class="text-yellow-light active" target="_blank" href="javascript:;"><span class="icon-comment"></span>您有26条未读消息</a></li>
-									<li><a class="text-yellow-light active" target="_blank" href="javascript:;"><span class="icon-comments"></span>您有13条回复消息</a></li>
-									<li><a class="bg-gray" target="_blank" href="javascript:;"><span class="icon-envelope"></span>查看更多...</a></li>
-								</ul>
-							</li>
-							<li><a class="bg-yellow" target="_blank" href="login.html"><span class="icon-sign-out"></span>注销</a></li>
-						</ul>
-						<div class="navbar-form navbar-left">
-							<form>
-								<input type="text" class="input input-auto" name="keywords" size="15" placeholder="功能名称">
-								<input type="submit" name="search" value="搜索" class="button bg">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--内容-->
-		<div class="layout">
-			<ul class="bread bg">
-				<li><a href="#" class="icon-home">首页</a> </li>
-				<li><a href="#">内容中心</a></li>
-			</ul>
-			<div class="admin">
-				<div class="line-big">
-					<div class="xm3">
-						<div class="panel border-back">
-							<div class="panel-body text-center">
-								<!-- <img src="http://www.pintuer.com/demo/pintuer2/images/face.jpg" width="120" class="radius-circle"> -->
-								<img src="/images/face.jpg" width="120" class="radius-circle">
-								<br> admin
-							</div>
-							<div class="panel-foot bg-back border-back">您好，admin，这是您第100次登录，上次登录为2014-10-1。</div>
-						</div>
-						<br>
-						<div class="panel">
-							<div class="panel-head"><strong>站点统计</strong></div>
-							<ul class="list-group">
-								<li><span class="float-right badge bg-red">88</span><span class="icon-user"></span> 会员</li>
-								<li><span class="float-right badge bg-red"></span><span class="icon-cog"></span> 系统</li>								
-								<li><span class="float-right badge bg-main">828</span><span class="icon-file"></span> 文件</li>
-								<li><span class="float-right badge bg-main">828</span><span class="icon-shopping-cart"></span> 订单</li>
-								<li><span class="float-right badge bg-main">828</span><span class="icon-file-text"></span> 内容</li>
-								<li><span class="float-right badge bg-main">828</span><span class="icon-database"></span> 数据库</li>
-							</ul>
-						</div>
-						<br>
-					</div>
-					<div class="xm9">
-						<form method="post">
-						<div class="panel admin-panel">
-							<div class="panel-head"><strong>内容列表</strong></div>
-							<div class="padding border-bottom">
-								<input type="button" class="button button-small checkall" name="checkall" checkfor="id" value="全选" />
-								<input type="button" class="button button-small border-green" value="添加文章" />
-								<input type="button" class="button button-small border-yellow" value="批量删除" />
-								<input type="button" class="button button-small border-blue" value="回收站" />
-							</div>
-							<table class="table table-hover">
-								<tr>
-									<th width="45">选择</th>
-									<th width="120">分类</th>
-									<th width="*">名称</th>
-									<th width="100">时间</th>
-									<th width="100">操作</th>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="1" />
-									</td>
-									<td>起步</td>
-									<td>下载拼图框架</td>
-									<td>2014-10-1</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="2" />
-									</td>
-									<td>起步</td>
-									<td>框架包含的文件</td>
-									<td>2014-9-20</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="3" />
-									</td>
-									<td>起步</td>
-									<td>浏览器支持</td>
-									<td>2014-9-10</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="4" />
-									</td>
-									<td>起步</td>
-									<td>移动优先、跨屏响应</td>
-									<td>2014-9-1</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="5" />
-									</td>
-									<td>起步</td>
-									<td>基本页面</td>
-									<td>2014-8-20</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="6" />
-									</td>
-									<td>起步</td>
-									<td>第三方应用支持</td>
-									<td>2014-8-10</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="9" />
-									</td>
-									<td>CSS</td>
-									<td>文本</td>
-									<td>2014-7-10</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="10" />
-									</td>
-									<td>CSS</td>
-									<td>背景、边框、圆角</td>
-									<td>2014-7-1</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="11" />
-									</td>
-									<td>CSS</td>
-									<td>边界、填充</td>
-									<td>2014-6-20</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox" name="id" value="12" />
-									</td>
-									<td>CSS</td>
-									<td>CSS动画</td>
-									<td>2014-6-10</td>
-									<td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
-								</tr>
-							</table>
-							<div class="panel-foot text-center">
-								<ul class="pagination">
-									<li><a href="#">上一页</a></li>
-								</ul>
-								<ul class="pagination pagination-group">
-									<li><a href="#">1</a></li>
-									<li class="active"><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-								</ul>
-								<ul class="pagination">
-									<li><a href="#">下一页</a></li>
-								</ul>
-							</div>
-						</div>
-						</form>
-						<!-- <br />
-						<p class="text-right text-gray">基于<a class="text-gray" target="_blank" href="http://www.pintuer.com">拼图前端框架</a>构建</p>	 -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--底部-->
-		<!-- <div class="layout fixed-bottom bg-white"> -->
-		<div class="layout  bg-white">
-			<div class="border-bottom padding-bottom">
-				<div class="text-center height-big text-small">
-					<strong>版权所有 © <a href="http://www.pintuer.com">Pintuer.com</a> All Rights Reserved，图ICP备：<a href="http://www.pintuer.com">380959609</a></strong>
-				</div>
-			</div>
-		</div>
-		
-		<script src="http://www.pintuer.com/js/jquery.js"></script>
-		<script src="http://www.pintuer.com/js/pintuer.js"></script>
-		<script src="http://www.pintuer.com/plugins/respond.js"></script>
-		<script src="http://www.pintuer.com/plugins/layer/layer.js"></script>
-		<script src="js/admin.js"></script>
-		<script>
-			$(function() {
-				//大于移动端800宽度才弹出提示
-				if ($(window).width() >= 800) {
-					layer.open({
-						type: 1,
-						shade: false,
-						title: false, //不显示标题
-						area: ['420px', '540px'],
-						content: $('#alert-talk'), //捕获的元素
-						cancel: function(index) {
-							layer.close(index);
-						}
-					});
-				}
-			});
-		</script>
-	</body>
+<div class="xm9">
+    <form method="post">
+        <div class="panel admin-panel">
+            <div class="panel-head"><strong>内容列表</strong></div>
+            <div class="padding border-bottom">
+                <input type="button" class="button button-small checkall" name="checkall" checkfor="id" value="全选" />
+                <input type="button" class="button button-small border-green" value="添加文章" />
+                <input type="button" class="button button-small border-yellow" value="批量删除" />
+                <input type="button" class="button button-small border-blue" value="回收站" />
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th width="45">选择</th>
+                    <th width="120">分类</th>
+                    <th width="*">名称</th>
+                    <th width="100">时间</th>
+                    <th width="100">操作</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="1" />
+                    </td>
+                    <td>起步</td>
+                    <td>下载拼图框架</td>
+                    <td>2014-10-1</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="2" />
+                    </td>
+                    <td>起步</td>
+                    <td>框架包含的文件</td>
+                    <td>2014-9-20</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="3" />
+                    </td>
+                    <td>起步</td>
+                    <td>浏览器支持</td>
+                    <td>2014-9-10</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="4" />
+                    </td>
+                    <td>起步</td>
+                    <td>移动优先、跨屏响应</td>
+                    <td>2014-9-1</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="5" />
+                    </td>
+                    <td>起步</td>
+                    <td>基本页面</td>
+                    <td>2014-8-20</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="6" />
+                    </td>
+                    <td>起步</td>
+                    <td>第三方应用支持</td>
+                    <td>2014-8-10</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="9" />
+                    </td>
+                    <td>CSS</td>
+                    <td>文本</td>
+                    <td>2014-7-10</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="10" />
+                    </td>
+                    <td>CSS</td>
+                    <td>背景、边框、圆角</td>
+                    <td>2014-7-1</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="11" />
+                    </td>
+                    <td>CSS</td>
+                    <td>边界、填充</td>
+                    <td>2014-6-20</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="id" value="12" />
+                    </td>
+                    <td>CSS</td>
+                    <td>CSS动画</td>
+                    <td>2014-6-10</td>
+                    <td><a class="button border-blue button-little" href="#">修改</a> <a class="button border-yellow button-little" href="#" onclick="{if(confirm('确认删除?')){return true;}return false;}">删除</a></td>
+                </tr>
+            </table>
+            <div class="panel-foot text-center">
+                <ul class="pagination">
+                    <li><a href="#">上一页</a></li>
+                </ul>
+                <ul class="pagination pagination-group">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+                <ul class="pagination">
+                    <li><a href="#">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+</div>
 
-</html>
+<%- include('footer') %>
