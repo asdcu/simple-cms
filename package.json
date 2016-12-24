@@ -1,12 +1,12 @@
 {
-  "name": "jiuyuan",
+  "name": "simple-cms",
   "version": "1.0.0",
   "description": "offical website of yangjiang jiuyuan",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "asd",
   "license": "ISC",
   "dependencies": {
     "config-lite": "^1.5.0",
