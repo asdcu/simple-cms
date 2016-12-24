@@ -8,11 +8,13 @@ module.exports = {
         if(!req.session.user){
             return res.redirect('/login');
         }
+        next();
     },
     checkNotLogin: function checkNotLogin(req, res, next){
         //已登录，跳过登录步骤
         if(req.session.user){
-          res.render('/');
+          res.redirect('/');
         }
+        next();
     },
 }

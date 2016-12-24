@@ -6,7 +6,7 @@ var checkLogin = require('../middlewares/check').checkLogin;
 
 module.exports = function (app) {
     app.get('/', checkLogin, function(req, res){
-        res.render('/index');
+        res.render('index');
     });
 
     app.use('/system', require('./system'));

@@ -32,11 +32,13 @@
 	</div>
 	<div class="clear"> </div>
 	<div class="avtar"><img src="/images/avtar.png" /></div>
-	<form>
-		<input type="text" class="text" value="Username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Username';}" >
-		<div class="key"><input type="password" value="Password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Password';}"></div>
+	<form method="post">
+		<!--<input type="text" name="name" class="text" value="Username" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Username';}" >-->
+		<!--<div class="key"><input name="password" type="password" value="Password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Password';}"></div>-->
+        <input type="text" name="name" class="text" placeholder="username">
+        <div class="key"><input name="password" type="password" placeholder="*******"></div>
+		<div class="signin"><input type="submit" value="Login" ></div>
 	</form>
-	<div class="signin"><input type="submit" value="Login" ></div>
 </div>
 <div class="copy-rights">
 	<p>Copyright &copy; 2015-2016.Company name All rights reserved.<a target="_blank" href="http://www.asd945.com">asd</a></p>
