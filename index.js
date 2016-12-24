@@ -19,15 +19,15 @@ app.set('views', path.join(__dirname, 'views'));
 //设置静态文件目录
 app.use(express.static(path.join(__dirname, 'public')));
 
-//session中间件
+// session 中间件
 app.use(session({
-    name: config.session.Key, //设置cookie
-    secret: config.session.secret, //通过设置secret来计算hash值并放在cookie中，使产生的signedCookie防篡改
+    name: config.session.key,// 设置 cookie 中保存 session id 的字段名称
+    secret: config.session.secret,// 通过设置 secret 来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改
     cookie: {
-        maxAge: config.session.maxAge //过期时间，过期后cookcie中sessionId自动删除
+        maxAge: config.session.maxAge// 过期时间，过期后 cookie 中的 session id 自动删除
     },
-    store: new MongoStore({ //将session存储在mongodb
-        url: config.mongonb //mongodb
+    store: new MongoStore({// 将 session 存储到 mongodb
+        url: config.mongodb// mongodb 地址
     })
 }));
 
