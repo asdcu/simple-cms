@@ -7,7 +7,9 @@ var express = require('express');
 var session = require('express-session');
 var routes = require('./routes');
 var config = require('config-lite');
+var flash = require('connect-flash');
 var MongoStore = require('connect-mongo')(session);
+var pkg = require('./package');
 var app = express();
 
 //设置模板引擎
@@ -36,6 +38,24 @@ app.use(require('express-formidable')({
     uploadDir: path.join(__dirname, 'public/upload'),// 上传文件目录
     keepExtensions: true// 保留后缀
 }));
+
+//flash中间件
+app.use(flash());
+
+//设置模板全局常量
+app.locals.thissite = {
+    title: pkg.name,
+    description: pkg.description
+};
+
+//设置模板必须三个常量
+app.use(function(req, res, next){
+    res.locals.user = req.session.user;
+    res.website = req.flash('site').toString();
+    res.locals.success = req.flash('success').toString();
+    res.locals.error = req.flash('error').toString();
+    next();
+});
 
 //路由
 routes(app);

@@ -8,11 +8,10 @@
             <div class="xm3">
                 <div class="panel border-back">
                     <div class="panel-body text-center">
-                        <!-- <img src="http://www.pintuer.com/demo/pintuer2/images/face.jpg" width="120" class="radius-circle"> -->
-                        <img src="/images/face.jpg" width="120" class="radius-circle">
-                        <br> admin
+                        <img src="/upload/<%= user.avatar %>" width="120" class="radius-circle">
+                        <br> <%= user.name %>
                     </div>
-                    <div class="panel-foot bg-back border-back">您好，admin，这是您第100次登录，上次登录为2014-10-1。</div>
+                    <div class="panel-foot bg-back border-back">您好，<%= user.admin_name %>，这是您第<%= user.login_num %>次登录，上次登录为<%= user.last_login_time %>。</div>
                 </div>
                 <br>
                 <div class="panel">

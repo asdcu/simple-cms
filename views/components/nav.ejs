@@ -7,7 +7,7 @@
                 </button>
                 <a href="/">
                     <img src="http://www.pintuer.com/images/30-white.png" />
-                    <strong class="text-big">拼图响应式后台</strong></a>
+                    <strong class="text-big"><%= thissite.title %></strong></a>
             </div>
             <div class="navbar-body nav-navicon" id="navbar1">
                 <ul class="nav nav-inline nav-menu">
@@ -45,8 +45,8 @@
                 <ul class="nav nav-inline nav-menu navbar-right">
                     <li>
                         <a class="bg-main" href="javascript:;">
-                            <spn><img src="/images/face.jpg" width="28" class="radius-circle"></spn>
-                            管理员
+                            <spn><img src="/upload/<%= user.avatar %>" width="28" class="radius-circle"></spn>
+                            <%= user.admin_name %>
                             <span class="downward"></span>
                         </a>
                         <ul class="drop-menu">
@@ -67,7 +67,7 @@
                             <li><a class="bg-gray" target="_blank" href="javascript:;"><span class="icon-envelope"></span>查看更多...</a></li>
                         </ul>
                     </li>
-                    <li><a class="bg-yellow" target="_blank" href="/logout"><span class="icon-sign-out"></span>注销</a></li>
+                    <li><a class="bg-yellow" href="/logout"><span class="icon-sign-out"></span>注销</a></li>
                 </ul>
                 <div class="navbar-form navbar-left">
                     <form>

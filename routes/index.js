@@ -13,4 +13,5 @@ module.exports = function (app) {
     app.use('/content', require('./content'));
     app.use('/login', require('./login'));
     app.use('/logout', require('./logout'));
+    app.use('/user', require('./user'));
 };
