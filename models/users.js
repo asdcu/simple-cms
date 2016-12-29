@@ -11,12 +11,49 @@ module.exports = {
         return User.create(user).exec();
     },
 
+    //更新用户信息
+    update: function update(userId, data){
+        return User.update({_id: userId}, {$set: data});
+    },
+
+    //获取当前页所有用户
+    getAllUser: function getAllUser(limit,offset){
+        var thisPage = limit * (offset -1);
+        console.log(thisPage);
+        return User
+            .find()
+            .skip(thisPage)
+            .limit(limit)
+            .exec();
+    },
+
+    //删除用户
+    removeUserByUserId: function removeUserByUserId(userId){
+        return User
+            .remove({_id: userId})
+            .exec();
+    },
+
+    //获取所有用户用于统计
+    getAllUserCount: function getAllUserCount(){
+        return User
+            .find()
+            .exec();
+    },
+
+
     //通过用户名获取用户信息
     getUserByName: function getUserByName(name){
         return User
             .findOne({name: name})
-            .addCreatedAt()
             .exec();
+    },
+
+    //通过用户id获取用户信息
+    getUserByUserId: function getUserByUserId(userId) {
+        return User
+            .findOne({_id: userId})
+            .exec()
     },
 
     //通过管理员id给login_num加1

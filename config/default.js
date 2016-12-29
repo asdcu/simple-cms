@@ -10,5 +10,8 @@ module.exports = {
         key: 'jiuyuan',
         maxAge: 2592000000
     },
-    mongodb: 'mongodb://localhost:27017/jiuyuan'
+    //mongodb地址
+    mongodb: 'mongodb://localhost:27017/jiuyuan',
+    //分页数量
+    pageNUm: 10
 };
