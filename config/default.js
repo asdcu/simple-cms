@@ -11,7 +11,5 @@ module.exports = {
         maxAge: 2592000000
     },
     //mongodb地址
-    mongodb: 'mongodb://localhost:27017/jiuyuan',
-    //分页数量
-    pageNUm: 10
+    mongodb: 'mongodb://127.0.0.1:27017/jiuyuan'
 };

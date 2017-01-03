@@ -1,0 +1,78 @@
+<%- include('../header') %>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"> </script>
+
+<div class="xm9">
+    <div class="tab-body">
+        <br />
+        <div class="tab-panel active" id="tab-set">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" value="<%= single_post._id %>" name="id"/>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="title">文章标题</label>
+                    </div>
+                    <div class="field">
+                        <input class="input" name='title' value="<%= single_post.title %>" cols="50" placeholder="请填写文章标题" data-validate="required:请填写文章标题"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="content">
+                            文章内容
+                        </label>
+                    </div>
+                    <script id="content" type="text/plain" style="min-height:350px;margin:5px auto" >
+                        <%- single_post.content %>
+                    </script>
+                    <script>
+                        var ue = UE.getEditor('content');
+                    </script>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="is_show">文章是否展示</label>
+                    </div>
+                    <div class="field">
+                        <div class="button-group button-group-small radio">
+                            <label class="button active">
+                                <input name="is_show" value="1" checked="checked" type="radio">是
+                            </label>
+                            <label class="button">
+                                <input name="is_no_show" value="0" type="radio">否
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="f_class">
+                            所属栏目
+                        </label>
+                    </div>
+                    <div class="field">
+                        <select class="input" id="is_belong" name="is_belong" data-validate="required:请选择所属栏目,length#>=1:至少选择1项">
+                            <option value="1" selected="selected">公告</option>
+                            <option value="2">站内新闻</option>
+                            <option value="3">行业动态</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-button">
+                    <button class="button bg-red button-block" type="submit">
+                        确认
+                    </button>
+                    <div class="padding-small"></div>
+                    <button class="button bg-yellow form-reset button-block" type="reset">
+                        重设
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('../footer') %>

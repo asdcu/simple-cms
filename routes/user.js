@@ -6,7 +6,12 @@ var fs = require('fs');
 var path = require('path');
 var sha1 = require('sha1');
 var express = require('express');
+var bodyParser = require('body-parser');
+//处理上传图片
+var multer = require('multer');
 var router = express.Router();
+//文件上传目录
+var upload = multer({dest: path.join(path.resolve('./'), 'public/upload/avatar')});
 var checkLogin = require('../middlewares/check').checkLogin;
 var UserModel = require('../models/users');
 var Tool = require('../lib/tool');
@@ -17,6 +22,7 @@ router.get('/', checkLogin, function(req, res, next){
     //分页paginate
     var thispage = !!(req.query.page) ? parseInt(req.query.page) : 1;
     var totalPageNum = 0;
+    var userNum = 0;
     UserModel.getAllUserCount()
         .then(function (result) {
            userNum = result.length;
@@ -29,7 +35,7 @@ router.get('/', checkLogin, function(req, res, next){
             });
             //总页数
             totalPageNum = Math.ceil(userNum/pageNum);
-            res.render('user', {'allusers': result, 'pagenum': totalPageNum, 'thispage': thispage});
+            res.render('user/user', {'allusers': result, 'pagenum': totalPageNum, 'thispage': thispage});
             // res.render('user', {'allusers': result});
         })
         .catch(next);
@@ -37,16 +43,16 @@ router.get('/', checkLogin, function(req, res, next){
 
 //添加用户页面
 router.get('/create', checkLogin, function(req, res, next){
-   res.render('createuser');
+   res.render('user/createuser');
 });
 
 //添加用户
-router.post('/create', checkLogin, function(req, res, next){
-    var name = req.fields.name;
-    var admin_name = req.fields.admin_name;
-    var password = req.fields.password;
-    var repassword = req.fields.repassword;
-    var avatar = req.files.avatar.path.split(path.sep).pop();
+router.post('/create', checkLogin, upload.single('avatar'), function(req, res, next){
+    var name = req.body.name,
+        admin_name = req.body.admin_name,
+        password = req.body.password,
+        repassword = req.body.repassword,
+        avatar = req.file.filename;
     //校验参数
     try{
         if(!(name.length >= 1 && name.length <= 10)){
@@ -55,7 +61,7 @@ router.post('/create', checkLogin, function(req, res, next){
         if(!(admin_name.length >=1 && admin_name.length <= 30)){
             throw new Error('账号名称请限制在1-30个字符');
         }
-        if(!req.files.avatar.name){
+        if(!req.file.fieldname){
             throw new Error('缺少头像');
         }
         if(password.length < 6){
@@ -63,7 +69,7 @@ router.post('/create', checkLogin, function(req, res, next){
         }
     }catch (e){
         //注册失败，异步删除已上传的头像
-        fs.unlink(req.files.avatar.path);
+        fs.unlink(req.file.path);
         req.flash('error', e.message);
         return res.redirect('/user/create');
     }
@@ -93,7 +99,7 @@ router.post('/create', checkLogin, function(req, res, next){
         })
         .catch(function(e){
             //写入数据库失败，异步删除上传的头像
-            fs.unlink(req.files.avatar.path);
+            fs.unlink(req.file.path);
             //用户名被占用则调回添加用户注册页，而不跳转错误页
             if(e.message.match('E11000 duplicate key')){
                 req.flash('error', '用户名已被占用');
@@ -110,18 +116,20 @@ router.get('/:name/edit', checkLogin, function(req, res, next){
     var name = req.params.name;
     UserModel.getUserByName(name)
         .then(function (result) {
-            res.render("edituser", { "single_user": result});
+            res.render("user/edituser", { "single_user": result});
         })
         .catch(next);
 });
 
 //编辑用户
-router.post('/:name/edit', checkLogin, function (req, res, next) {
+router.post('/:name/edit', checkLogin, upload.single('avatar'), function (req, res, next) {
     //通过用户id修改用户信息
-    var userId = req.fields.userId,
-        admin_name = req.fields.admin_name,
-        name = req.fields.name,
-        password = req.fields.password;
+    var name = req.body.name,
+        admin_name = req.body.admin_name,
+        password = req.body.password,
+        repassword = req.body.repassword,
+        userId = req.body.userId;
+
 
     //校验参数
     try{
@@ -148,7 +156,6 @@ router.post('/:name/edit', checkLogin, function (req, res, next) {
         admin_name: admin_name,
         password: password
     };
-
     //信息写入数据库
     UserModel.update(userId, user)
         .then(function(result){

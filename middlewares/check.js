@@ -16,5 +16,5 @@ module.exports = {
           res.redirect('/');
         }
         next();
-    },
-}
+    }
+};

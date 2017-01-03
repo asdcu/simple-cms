@@ -12,17 +12,15 @@ router.get('/', checkNotLogin, function(req, res, next){
    res.render('login');
 });
 
-router.post('/', checkNotLogin, function(req, res, next){
-    var name = req.fields.name;
-    var password = req.fields.password;
-
-    UserModel.getUserByName(name)
+router.post('/', function(req, res, next){
+    var name = req.body.name;
+    var password = req.body.password;
+     UserModel.getUserByName(name)
         .then(function(user){
             if(!user){
                 console.log('用户不存在');
                 return res.redirect('/login');
             }
-
             //检查密码是否匹配
             if(sha1(password) !== user.password){
                 console.log('用户名或密码错误');
@@ -56,6 +54,6 @@ router.post('/', checkNotLogin, function(req, res, next){
             res.redirect('/');
         })
         .catch(next);
-})
+});
 
 module.exports = router;

@@ -13,7 +13,7 @@ module.exports = {
 
     //更新用户信息
     update: function update(userId, data){
-        return User.update({_id: userId}, {$set: data});
+        return User.update({_id: userId}, {$set: data}).exec();
     },
 
     //获取当前页所有用户
